@@ -75,11 +75,11 @@ class ProfileUpdate extends Component{
                             Gender <br/>
                             <div className="form-check form-check-inline">
                                 <input type="radio" name="gender" value="male" onChange={this.handleChange} required className="form-check-input" checked={(data.gender === 'male')}/>
-                                <label clssName="form-check-label">Male</label>
+                                <label className="form-check-label">Male</label>
                             </div>
                             <div className="form-check form-check-inline">
                             <input type="radio" name="gender" value="female" onChange={this.handleChange} required className="form-check-input" checked={(data.gender === 'female')}/>
-                                <label clssName="form-check-label">Female</label>
+                                <label className="form-check-label">Female</label>
                             </div>
                             </div>
 

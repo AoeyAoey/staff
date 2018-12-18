@@ -1,5 +1,4 @@
 import React,{Component} from 'react'
-import Moment from 'react-moment';
 import {connect} from 'react-redux'
 import {loadRegisToDay} from '../../Actions'
 class getRegisThisDay extends Component{
