@@ -2,6 +2,7 @@ Functional
 - Login with email, password
 - Create / Edit staff profile
 - Dashboard บอกยอด staff ทั้งหมด  และยอด staff ที่สมัครใหม่วันนี้
+------------------
 Technology
 - front web : ReactJS
 - service : Express
