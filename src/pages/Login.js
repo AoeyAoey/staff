@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import {checkLogin} from '../Actions'
+import { Alert } from 'reactstrap';
 class Login extends Component{
     // state = {
     //     username:'',
@@ -14,7 +15,7 @@ class Login extends Component{
         const {CheckLogin} = this.props
         let list = ''
         if(CheckLogin.isLoading){
-             list = <div>Loading ...</div>
+             list = <Alert color="light">Loading . . .</Alert>
         }
         
 
@@ -28,41 +29,39 @@ class Login extends Component{
                     this.props.history.push('/')
                    
                 }else{
-                    list = <h4>ตรวจสอบ username / password</h4>
+                    list = <Alert color="danger">ตรวจสอบ username / password</Alert>
                 }
             }
         }
         if(CheckLogin.isFailed){
-            list = <div>ผิดพลาด : {CheckLogin.data}</div>
+            list = <Alert color="danger">ผิดพลาด : {CheckLogin.data}</Alert>
         }
         
         return(
             <div className="content container">
-            <div className="row">
-                <div className="col-md-12">
-                
-                    <div className="docs-example">
-                    <h2 className="h3">Login</h2>
-                    <hr/>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="Username">Username</label>
-                            <input type="text" name="username" onChange={this.handleChange} className="form-control"/>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="docs-example">
+                            <h2 className="h3">Login</h2>
+                            <hr/>
+                            {list}
+                            <form onSubmit={this.handleSubmit}>
+                                <div className="form-group">
+                                    <label htmlFor="Username">Email</label>
+                                    <input type="text" name="username" onChange={this.handleChange} className="form-control" required/>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="Username">Password</label>
+                                    <input type="password" name="password" onChange={this.handleChange} className="form-control" required/>
+                                </div>
+                                {/* <p>Username : <input type="text" name="username" onChange={this.handleChange}/></p> */}
+                                {/* <p>Passwordd : <input type="password" name="password" onChange={this.handleChange}/></p> */}
+                                <button className="btn btn-secondary" type="submit">Submit</button>
+                                {/* <button type="submit">ยืนยัน</button> */}
+                            </form>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="Username">Password</label>
-                            <input type="password" name="password" onChange={this.handleChange} className="form-control"/>
-                        </div>
-                        {/* <p>Username : <input type="text" name="username" onChange={this.handleChange}/></p> */}
-                        {/* <p>Passwordd : <input type="password" name="password" onChange={this.handleChange}/></p> */}
-                        <button className="btn btn-secondary" type="submit">Submit</button>
-                        {/* <button type="submit">ยืนยัน</button> */}
-                    </form>
                     </div>
-                    
-                    {list}
                 </div>
-            </div>
             </div>
         )
     }

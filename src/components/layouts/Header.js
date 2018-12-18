@@ -47,6 +47,9 @@ class Header extends Component{
                     <Link to="/profile" className="nav-link">Profile</Link>
                 </NavItem>
                 <NavItem>
+                    <Link to="/dashboard" className="nav-link">Dashboard</Link>
+                </NavItem>
+                <NavItem>
                     <Link to="/Logout" className="nav-link">Logout</Link>
                 </NavItem>
                 </Nav>
@@ -78,4 +81,4 @@ class Header extends Component{
       }
 }
 
-export default Header
+export default withRouter(Header)

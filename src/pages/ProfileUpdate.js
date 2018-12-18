@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import {loadProfileToken} from '../Actions'
 import ProfileUpdateF from '../components/profile/ProfileUpdate'
+import { Alert } from 'reactstrap';
 class ProfileUpdate extends Component {
     componentDidMount(){
         this.props.dispatch(loadProfileToken())
@@ -10,7 +11,7 @@ class ProfileUpdate extends Component {
         const {loadProfileToken} = this.props
         let list =''
         if(loadProfileToken.isLoading){
-             list = <div>loading ...</div>
+            list = <Alert color="light">Loading . . .</Alert>
         }
         
 
@@ -20,13 +21,13 @@ class ProfileUpdate extends Component {
                      list = <ProfileUpdateF data={loadProfileToken.data}/>
                     // console.log(loadProfileToken.data)
                 }else{
-                    list = <h4>No data</h4>
+                    list = <Alert color="danger">No Data</Alert>
                 }
             }
         }
 
         if(loadProfileToken.isFailed){
-            list = <div>Error {loadProfileToken.data}</div>
+            list = <Alert color="danger">ผิดพลาด : {loadProfileToken.data}</Alert>
         }
         return(
             <div>

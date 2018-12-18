@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import {loadProfileToken} from '../Actions'
 import ProfileList from '../components/profile/ProfileList'
+import { Alert } from 'reactstrap';
 class Profile extends Component {
     componentDidMount(){
         this.props.dispatch(loadProfileToken())
@@ -11,7 +12,7 @@ class Profile extends Component {
         //  console.log(loadProfileToken)
         let list =''
         if(loadProfileToken.isLoading){
-             list = <div>loading ...</div>
+            list = <Alert color="light">Loading . . .</Alert>
         }
         
 
@@ -21,20 +22,26 @@ class Profile extends Component {
                      list = <ProfileList data={loadProfileToken.data}/>
                     // console.log(loadProfileToken.data)
                 }else{
-                    list = <h4>No data</h4>
+                    list = <Alert color="danger">ไม่มีข้อมูล</Alert>
                 }
             }
         }
 
         if(loadProfileToken.isFailed){
-            list = <div>Error {loadProfileToken.data}</div>
+            list = <Alert color="danger">Error : {loadProfileToken.data}</Alert>
         }
         return(
-            <div>Profile
-
-{list}
-            </div>
-            
+            <div className="content container">
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="docs-example">
+                        <h2 className="h3">Profile Infomation</h2>
+                        <hr/>
+                        {list}
+                        </div>
+                    </div>
+                </div>
+            </div>            
         )
     }
 }

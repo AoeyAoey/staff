@@ -140,3 +140,60 @@ export const profileUpdateAction = (data) =>{
         
     }
 }
+
+export const loadDashboard = () =>{
+    return (dispatch) => {
+        dispatch({
+            type:"DASHBOARD_LOADING"
+        })
+        fetch(`http://127.0.0.1:3001/api/users/getAll`)
+        .then(res =>{
+            if(res.ok){
+                return res
+            }
+            throw Error(res.status)
+        })
+        .then(result => result.json())
+        .then(result =>{
+            dispatch({
+                type:'DASHBOARD_SUCCESS',
+                payload:result
+            })
+            //  console.log(result)
+        })
+        .catch(e => dispatch({
+            type: 'DASHBOARD_FAIL',
+            payload : e.message
+            
+        }))
+
+    }
+}
+export const loadRegisToDay = () =>{
+    return (dispatch) => {
+        dispatch({
+            type:"LOAD_REGIS_TODAY_LOADING"
+        })
+        fetch(`http://127.0.0.1:3001/api/users/getThisDay`)
+        .then(res =>{
+            if(res.ok){
+                return res
+            }
+            throw Error(res.status)
+        })
+        .then(result => result.json())
+        .then(result =>{
+            dispatch({
+                type:'LOAD_REGIS_TODAY_SUCCESS',
+                payload:result
+            })
+            //  console.log(result)
+        })
+        .catch(e => dispatch({
+            type: 'LOAD_REGIS_TODAY_FAIL',
+            payload : e.message
+            
+        }))
+
+    }
+}

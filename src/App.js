@@ -8,6 +8,7 @@ import Header from './components/layouts/Header'
 import Register from './pages/Register'
 import ProfileUpdate from './pages/ProfileUpdate'
 import Logout from './pages/Logout'
+import dashboard from './pages/Dashboard'
 class App extends Component {
   render() {
     return (
@@ -17,7 +18,7 @@ class App extends Component {
         <Switch>
           <PrivateRoute exact path='/' component={Profile}/>
           <PrivateRoute exact path='/profile' component={Profile}/>
-          <PrivateRoute path="/dashboard" component ={Login}/>
+          <PrivateRoute path="/dashboard" component ={dashboard}/>
           <PrivateRoute path="/profileUpdate" component ={ProfileUpdate}/>
           <PrivateRoute path="/logout" component ={Logout}/>
           <Route path='/login' component={Login}/>
